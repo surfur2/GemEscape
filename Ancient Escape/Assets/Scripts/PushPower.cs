@@ -30,8 +30,18 @@ public class PushPower : MonoBehaviour {
             {
                 if (hit && hit.transform.gameObject != gameObject && hit.transform.gameObject.tag == "Block")
                 {
-                    var blockHits = Physics2D.RaycastAll(hit.transform.position, Vector3.right, hit.transform.GetComponent<Movement>().width/2);
-                    foreach (RaycastHit2D innerHit in blockHits)
+                    List<RaycastHit2D> blocksHit = new List<RaycastHit2D>();
+                    Movement blockMove = hit.transform.gameObject.GetComponent<Movement>();
+                    for (int i = 1; i <= blockMove.height; i++)
+                    {
+                        Vector3 upRaycast = hit.transform.position;
+                        upRaycast.y += i / 2;
+                        Vector3 downRaycast = hit.transform.position;
+                        downRaycast.y -= i / 2;
+                        blocksHit.AddRange(Physics2D.RaycastAll(upRaycast, Vector3.right, 1f));
+                        blocksHit.AddRange(Physics2D.RaycastAll(downRaycast, Vector3.right, 1f));
+                    }
+                    foreach (RaycastHit2D innerHit in blocksHit)
                     {
                         if (innerHit && innerHit.transform.gameObject != hit.transform.gameObject)
                             open = false;
@@ -50,8 +60,18 @@ public class PushPower : MonoBehaviour {
             {
                 if (hit && hit.transform.gameObject != gameObject && hit.transform.gameObject.tag == "Block")
                 {
-                    var blockHits = Physics2D.RaycastAll(hit.transform.position, Vector3.left, hit.transform.GetComponent<Movement>().width / 2);
-                    foreach (RaycastHit2D innerHit in blockHits)
+                    List<RaycastHit2D> blocksHit = new List<RaycastHit2D>();
+                    Movement blockMove = hit.transform.gameObject.GetComponent<Movement>();
+                    for (int i = 1; i <= blockMove.height; i++)
+                    {
+                        Vector3 upRaycast = hit.transform.position;
+                        upRaycast.y += i / 2;
+                        Vector3 downRaycast = hit.transform.position;
+                        downRaycast.y -= i / 2;
+                        blocksHit.AddRange(Physics2D.RaycastAll(upRaycast, Vector3.left, 1f));
+                        blocksHit.AddRange(Physics2D.RaycastAll(downRaycast, Vector3.left, 1f));
+                    }
+                    foreach (RaycastHit2D innerHit in blocksHit)
                     {
                         if (innerHit && innerHit.transform.gameObject != hit.transform.gameObject)
                             open = false;
@@ -71,8 +91,18 @@ public class PushPower : MonoBehaviour {
             {
                 if (hit && hit.transform.gameObject != gameObject && hit.transform.gameObject.tag == "Block")
                 {
-                    var blockHits = Physics2D.RaycastAll(hit.transform.position, Vector3.up, hit.transform.GetComponent<Movement>().height / 2);
-                    foreach (RaycastHit2D innerHit in blockHits)
+                    List<RaycastHit2D> blocksHit = new List<RaycastHit2D>();
+                    Movement blockMove = hit.transform.gameObject.GetComponent<Movement>();
+                    for (int i = 1; i <= blockMove.height; i++)
+                    {
+                        Vector3 upRaycast = hit.transform.position;
+                        upRaycast.y += i / 2;
+                        Vector3 downRaycast = hit.transform.position;
+                        downRaycast.y -= i / 2;
+                        blocksHit.AddRange(Physics2D.RaycastAll(upRaycast, Vector3.up, 1f));
+                        blocksHit.AddRange(Physics2D.RaycastAll(downRaycast, Vector3.up, 1f));
+                    }
+                    foreach (RaycastHit2D innerHit in blocksHit)
                     {
                         if (innerHit && innerHit.transform.gameObject != hit.transform.gameObject)
                             open = false;
@@ -91,8 +121,18 @@ public class PushPower : MonoBehaviour {
             {
                 if (hit && hit.transform.gameObject != gameObject && hit.transform.gameObject.tag == "Block")
                 {
-                    var blockHits = Physics2D.RaycastAll(hit.transform.position, Vector3.down, hit.transform.GetComponent<Movement>().height / 2);
-                    foreach (RaycastHit2D innerHit in blockHits)
+                    List<RaycastHit2D> blocksHit = new List<RaycastHit2D>();
+                    Movement blockMove = hit.transform.gameObject.GetComponent<Movement>();
+                    for (int i = 1; i <= blockMove.height; i++)
+                    {
+                        Vector3 upRaycast = hit.transform.position;
+                        upRaycast.y += i / 2;
+                        Vector3 downRaycast = hit.transform.position;
+                        downRaycast.y -= i / 2;
+                        blocksHit.AddRange(Physics2D.RaycastAll(upRaycast, Vector3.down, 1f));
+                        blocksHit.AddRange(Physics2D.RaycastAll(downRaycast, Vector3.down, 1f));
+                    }
+                    foreach (RaycastHit2D innerHit in blocksHit)
                     {
                         if (innerHit && innerHit.transform.gameObject != hit.transform.gameObject)
                             open = false;
