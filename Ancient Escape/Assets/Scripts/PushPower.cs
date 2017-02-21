@@ -12,7 +12,8 @@ public class PushPower : MonoBehaviour {
 
     void Start ()
     {
-        castableButton.text = numberCastable.ToString();
+        if (castableButton != null)
+            castableButton.text = numberCastable.ToString();
     }
 
     private bool open;
